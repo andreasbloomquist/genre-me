@@ -18,8 +18,20 @@ app.get("/", function (req, res){
 	res.send("Coming soon");
 });
 
+app.get("/login", function (req, res){
+	res.send("Coming soon");
+});
+
+app.get("/signup", function (req, res){
+	res.send("Coming soon");
+});
+
+app.get("/profile", function (req, res){
+	res.send("Coming soon");
+});
+
 app.listen(3000, function(){
-	console.log("Running!");
+	console.log("Running! GO CHECK LOCALHOST:3000");
 });
 
 // idea: hard code genre list to select from
