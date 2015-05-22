@@ -5,6 +5,8 @@ var express = require("express"),
 	path = require("path"),
 	db = require("./models");
 
+var views = path.join(__dirname, "views");
+
 app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -15,19 +17,23 @@ app.use(session({
 }));
 
 app.get("/", function (req, res){
-	res.send("Coming soon");
+	var homePath = path.join(views, "home.html");
+	res.sendFile(homePath);
 });
 
 app.get("/login", function (req, res){
-	res.send("Coming soon");
+	var loginPath = path.join(views, "login.html");
+	res.sendFile(loginPath);
 });
 
 app.get("/signup", function (req, res){
-	res.send("Coming soon");
+	var signupPath = path.join(views, "signup.html");
+	res.sendFile(signupPath);
 });
 
 app.get("/profile", function (req, res){
-	res.send("Coming soon");
+	var profilePath = path.join(views, "profile.html")
+	res.sendFile(profilePath);
 });
 
 app.listen(3000, function(){
