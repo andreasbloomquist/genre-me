@@ -30,12 +30,52 @@ var userSchema = new mongoose.Schema({
 							type: String,
 							default: ""
 						},
-						// user_genre field would hold an array of objects with ids that point to the genreSchema
 						user_genres: {
 							type: Array,
 							default: []
 						}
 					});
+
+var confirm = function (password, passwordConf) {
+	return password === passwordConf;
+};	
+
+userSchema.statics.createSecure = function (params, cb) {
+	var isConfirmed;
+	
+	isConfirmed = confirm(params.password, params.password_conf);
+	
+	if (!isConfirmed) {
+		return cb("Passwords Should Match", null);
+	};
+
+	var that = this;
+
+	bcrypt.hash (params.password, 10, function (err, hash) {
+		params.passwordDigest = hash;
+		that.create(params, cb);
+	});
+};
+
+userSchema.statics.authenticate = function(params, cb) {
+	this.findOne({
+		email: params.email
+	}, function (err, user) {
+		user.checkPassword(params.password, cb);
+	});
+};
+
+userSchema.methods.checkPassword = function (password, cb) {
+	var user = this;
+	bcrypt.compare(password,
+		user.passwordDigest, function (err, isMatch){
+			if (isMatch) {
+				cb(null, user);
+			} else {
+				cb("Oops your password doesnt seem right", null);
+			}
+		});
+};
 
 var User = mongoose.model("User", userSchema);
 

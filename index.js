@@ -16,6 +16,31 @@ app.use(session({
 	saveUnitialized: true
 }));
 
+var loginHelpers = function (req, res, next) {
+	req.login = function (user) {
+		req.session.userId = user._id;
+		req.user = user;
+		return user;
+	};
+
+	req.logout = function() {
+		req.session.userId = null;
+		req.user = null;
+	}
+
+	req.currentUser = function(cb) {
+		var userId = req.session.userId;
+		db.User.
+			findOne({
+				_id: userId
+			}, cb);
+	};
+
+	next();
+};
+
+app.use(loginHelpers);
+
 app.get("/", function (req, res){
 	var homePath = path.join(views, "home.html");
 	res.sendFile(homePath);
@@ -34,6 +59,42 @@ app.get("/signup", function (req, res){
 app.get("/profile", function (req, res){
 	var profilePath = path.join(views, "profile.html")
 	res.sendFile(profilePath);
+});
+
+//sign up post
+app.post("/users", function (req, res){
+	var newUser = req.body.user;
+
+	db.User.
+		createSecure(newUser, function (err, user){
+			if (user) {
+				req.login(user);
+				res.redirect("/profile");
+			} else {
+				res.redirect("/signup");
+			}
+		});
+});
+
+//login post
+app.post("/login", function (req, res){
+	var user = req.body.user;
+
+	db.User.
+	authenticate(user,
+		function (err, user){
+			if (!err) {
+				req.login(user);
+				res.redirect("/profile");
+			} else {
+				res.redirect("/login")
+			};
+		});
+});
+
+app.get("/logout", function (req, res){
+	req.logout();
+	res.redirect("/");
 });
 
 app.listen(3000, function(){
