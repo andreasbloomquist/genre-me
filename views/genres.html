@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Select a genre</title>
+	<script type="text/javascript" src="/data.js"></script>
+	<script type="text/javascript" src="/javascripts/app.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+<body>
+	<div id="page-wrapper" class="container-fluid collg-12">
+		<a href="/login">login</a>
+		<a href="/signup">signup</a>
+		<h1>Select a genre</h1>
+		<h2>Coming soon</h2>
+
+		<form action="/genres" method="POST" accept-charset="utf-8">
+  				<div class="form-group">
+    				<label>Enter a genre name</label>
+    				<input type="text" class="form-control" id="genreSelect" placeholder="enter a genre" name="genre[name]">
+  					<button>submit</button>
+  				</div>
+		</form>
+	</div>
+</body>
+</html>

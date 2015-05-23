@@ -61,6 +61,11 @@ app.get("/profile", function (req, res){
 	res.sendFile(profilePath);
 });
 
+app.get("/genres", function (req, res){
+	var genrePath = path.join(views, "genres.html");
+	res.sendFile(genrePath);
+});
+
 //sign up post
 app.post("/users", function (req, res){
 	var newUser = req.body.user;
@@ -69,7 +74,7 @@ app.post("/users", function (req, res){
 		createSecure(newUser, function (err, user){
 			if (user) {
 				req.login(user);
-				res.redirect("/profile");
+				res.redirect("/genres");
 			} else {
 				res.redirect("/signup");
 			}
