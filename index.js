@@ -6,9 +6,11 @@ var express = require("express"),
 	db = require("./models");
 
 var views = path.join(__dirname, "views");
+var pub = path.join(__dirname, "public");
 
 app = express();
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + '/public'));
 
 app.use(session({
 	secret: "Very secret",
@@ -101,6 +103,26 @@ app.get("/logout", function (req, res){
 	req.logout();
 	res.redirect("/");
 });
+
+// Post genre route
+app.post("/genres", function (req, res){
+	var genre = req.body.genre
+	var user = req.session.userId;
+
+	console.log(genre);
+	db.Genre.findGenre(genre, function(genre){
+		db.Genre.create({
+			genre_name: genre
+		}, function(err, genre){
+			console.log(genre);
+		});
+	});
+	
+})
+
+
+
+
 
 app.listen(3000, function(){
 	console.log("Running! GO CHECK LOCALHOST:3000");
