@@ -1,9 +1,8 @@
 var mongoose = require("mongoose");
 
 var genreSchema = new mongoose.Schema({
-	genre_name: {
+	name: {
 		type: String,
-		required: true,
 		index: {
 			unique: true
 			}
@@ -13,28 +12,32 @@ var genreSchema = new mongoose.Schema({
 		}
 	});
 
-// function to check to see if genre already exists 
-genreSchema.statics.findGenre = function (params, cb){
-	var genre = this;
-	this.findOne({
-		genre_name: params.name
-	}, function (err, genre){
-		if (genre){
-			console.log("genre is in the db");
-		}
-		else if (!genre) {
-			console.log("genre is not in db");
+// function to check to see if genre already exists.
+// If the genre exists, then, the user id is pushed into the array of users who like that genre
+// If the genre does not exist, then
+genreSchema.statics.findAndUpdateGenre = function (params, user){
+	var that = this;
+	var query = params;
+    var updateQuery = {$push: {users: user}};
+    var options = {safe: true, upsert: true};
+
+	this.findOneAndUpdate(query, updateQuery, function(err, genre){
+		if(genre) {
+    		console.log("Error:  "  + err + "Update: " + genre);
+    		return true;
+		} else {
+			that.create(params, function(err, genre){
+				that.findOneAndUpdate(query, updateQuery, function(err, genre){
+					console.log("Error:  "  + err + "Update: " + genre);
+				});
+			});
 		}
 	});
 };
 
-genreSchema.statics.createGenre = function (params) {
-	this.create({
-		genre_name: params.name
-	})
+genreSchema.statics.findUserGenres = function (user, cb){
+	this.find({users: user}, cb);
 }
-
-genreSchema.statics
 
 var Genre = mongoose.model("Genre", genreSchema);
 

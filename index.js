@@ -14,8 +14,8 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(session({
 	secret: "Very secret",
-	resave: false,
-	saveUnitialized: true
+	resave: true,
+	saveUnitialized: false
 }));
 
 var loginHelpers = function (req, res, next) {
@@ -106,23 +106,34 @@ app.get("/logout", function (req, res){
 
 // Post genre route
 app.post("/genres", function (req, res){
-	var genre = req.body.genre
+	var genre = req.body.genre;
 	var user = req.session.userId;
 
-	console.log(genre);
-	db.Genre.findGenre(genre, function(genre){
-		db.Genre.create({
-			genre_name: genre
-		}, function(err, genre){
-			console.log(genre);
-		});
-	});
+	//console.log(genre, user);
+	db.Genre.findAndUpdateGenre(genre, user);
 	
-})
+	res.redirect("/profile");
+});
 
+app.get("/current", function (req, res){
+	req.currentUser(function (err, user){
+		//console.log(err, user)
+		res.send(user);
+	});
+});
 
+// api route to get json for a particular genre._id
+app.get("/users/:id/genres", function (req, res){
+	var user = req.params.id;
 
-
+	db.Genre.findUserGenres(user, function(err, genres){
+		if (genres) {
+			res.send(genres);
+		} else {
+			res.send("there was an error");
+		};
+	});
+});
 
 app.listen(3000, function(){
 	console.log("Running! GO CHECK LOCALHOST:3000");

@@ -4,13 +4,27 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Profile</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/javascripts/app.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 <body>
 	<div id="page-wrapper" class="container-fluid collg-12">
 		<h1>Coming soon</h1>
 	</div>
+	<h3>Hey!</h3>
+	<div id="user-data"></div>
+	<h3>Genres you like</h3>
+	<div id="Genres"></div>
 </body>
+	<script type="text/template" id="profile-template">
+      		<ul>
+      			<li><%= first_name %></li>
+      			<li><%= last_name %></li>
+      			<li><%= birth %></li>
+      			<li><%= bio %></li>
+      		</ul>
+	</script>
 </html>
