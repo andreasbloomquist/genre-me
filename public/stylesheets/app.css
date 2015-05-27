@@ -1,0 +1,7 @@
+nav.custom-head{
+	border-radius: 0;
+	position: relative;
+	background-color: black;
+	border: none;
+	font-family: 'Roboto Slab', serif;
+}

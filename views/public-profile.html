@@ -12,13 +12,17 @@
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css">
 	<script type="text/javascript" src="http://connect.soundcloud.com/sdk.js"></script>
 	<script type="text/javascript" src="/javascripts/app.js"></script>
-	<script type="text/javascript" src="/javascripts/profile.js"></script>
-	<script type="text/javascript" src="javascripts/account.js"></script>
+	<script type="text/javascript" src="/javascripts/publicprof.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+  	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" type="text/css" href="/stylesheets/profile.css">
+
 </head>
 <body>
 	<header id="header">
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-default custom-head">
   			<div class="container-fluid">
 		    	<div class="navbar-header">
       				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -39,16 +43,7 @@
 	<div id="page-wrapper" class="container-fluid collg-12">
 		<h3 id="greet"></h3>
 		<div id="user-data"></div>
-		<h3>Genres you like</h3>
-
-			<a href="#" id="newGenre">Add a new genre</a>
-			<form id="toggleForm" action="/genres" method="POST" accept-charset="utf-8">
-  				<div class="form-group">
-    				<input type="text" class="form-control select" id="genreSelect" placeholder="enter a genre" name="genre[name]">
-  					<button type="submit" id="addGenre" disabled >submit</button>
-  				</div>
-			</form>
-		
+		<h3>Genres you like</h3>		
 		<div id="user-genres"></div>
 		<div id="player"></div>
 	</div>
@@ -64,7 +59,6 @@
 		<ul>
 			<% _.each(test, function(item){ %>
 			<li><a href='#' class='genre'><%= item.name %></a></li>
-			<button data-id="<%= item._id %>" onclick="removeGenre(this)" type="button" class="btn btn-default btn-xs" id="btn-rm">remove</button>
 			<% }); %>
 		</ul>
 	</script>

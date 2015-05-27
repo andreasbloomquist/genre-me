@@ -149,6 +149,16 @@ app.get("/users/:_id", function (req, res){
 	});
 });
 
+app.get("/users/:_id/profile", function (req, res){
+	var publicPath = path.join(views, "public-profile.html");
+	var user = req.params;
+	db.User.findOne(user, function(err, user){
+		if (user){
+			res.sendFile(publicPath);
+		};
+	})
+})
+
 app.post("/remove/:_id", function (req, res){
 	var user = req.session.userId;
 	var genre = req.params;

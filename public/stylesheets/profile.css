@@ -1,0 +1,14 @@
+nav.custom-head{
+	border-radius: 0;
+	position: relative;
+	background-color: black;
+	border: none;
+	font-family: 'Roboto Slab', serif;
+}
+body { 
+  background: url('/images/triangle-bg.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

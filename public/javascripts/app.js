@@ -25,7 +25,7 @@ function playSomeSound(genre){
 		genres: genre,
 		limit: 5,
 	}, function(res){
-		var randNum = Math.floor(Math.random()*11);
+		var randNum = Math.floor(Math.random()*6);
 		tracks = res[randNum].uri;
 		playGenre();
 	});
@@ -33,7 +33,7 @@ function playSomeSound(genre){
 
 // Function to embed SoundCloud player with the track selected from playSomeSound()
 function playGenre(){
-	SC.oEmbed(tracks, {iframe: false, show_artwork: true, auto_play: true, buying: false, download: false, sharing: false, liking: false, show_comments: false}, document.getElementById('player'));
+	SC.oEmbed(tracks, {iframe: true, show_artwork: true, auto_play: true, buying: false, download: false, sharing: false, liking: false, show_comments: false}, document.getElementById('player'));
 };
 
 // Function to initialize the SC based on the genres available on the page
