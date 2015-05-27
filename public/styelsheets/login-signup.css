@@ -54,3 +54,7 @@ input.form-control{
 	background-color: white;
 	opacity: 0.4;
 }
+.switchPage{
+	font-family: 'Roboto Slab', serif;
+	text-align: center;
+}
