@@ -9,22 +9,24 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link href='http://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="/styelsheets/login-signup.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/login-signup.css">
 </head>
 <body>
 	<div id="page-wrapper" class="container-fluid">
 		<h1>What music makes you move?</h1>
     <h2>let's get to know each other</h2>
     <div id="signup-form">
-			<form method="POST" action="/users">
+      <form data-toggle="validator" method="POST" action="/users" role="form" id="valid-form">
         <div class="col-sm-4 col-sm-offset-4">
-      		<input type="email" class="form-control custom" id="loginEmail" placeholder="Enter email*" name="user[email]">
-          <input type="password" class="form-control custom" id="loginPass" placeholder="Enter a password*" name="user[password]">
-      		<input type="password" class="form-control custom" id="passConf" placeholder="Confirm your password*" name="user[password_conf]">
-          <input type="text" class="form-control custom" id="firstName" placeholder="What's your first name*" name="user[first_name]">
-          <input type="text" class="form-control custom" id="lastName" placeholder="What's your last name?*" name="user[last_name]">                
+      		<input type="email" class="form-control custom" id="loginEmail" placeholder="Enter email*" name="user[email]" data-error="Bruh, that email address is invalid" required>
+          <input type="password" class="form-control custom" id="loginPass" placeholder="Enter a password*" name="user[password]" data-minlength="6" required>
+      		<input type="password" class="form-control custom" id="passConf" placeholder="Confirm your password*" name="user[password_conf]" required>
+          <input type="text" class="form-control custom" id="firstName" placeholder="What's your first name*" name="user[first_name]" required>
+          <input type="text" class="form-control custom" id="lastName" placeholder="What's your last name?*" name="user[last_name]" required>
+          <div class="help-block with-errors"></div>
+
       		<input type="text" class="form-control custom" id="userBio" placeholder="Enter a short bio" name="user[bio]">
-          <button id="submit">Submit</button>
+          <button class="submit">Submit</button>
           <p class="switchPage">Already have an account? <a class="switchPage" href="/login">Login here</a></p>
     		</div>
       </form>

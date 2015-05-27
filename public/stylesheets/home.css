@@ -1,0 +1,75 @@
+body { 
+  background: url('/images/triangle-bg.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+h1{
+	text-align: center;
+	font-family: 'Megrim', cursive;
+	font-size: 4.5em;
+	color: white;
+}
+h2 {
+	text-align: center;
+	font-family: 'Roboto Slab', serif;
+	padding-bottom: 1em;
+	color: white;
+}
+button.submit{
+	background-color: black;
+	opacity: 0.55;
+	color: white;
+	border-radius: 0.1em;
+	margin: 0 auto;
+	border: 0.25em solid white;
+	padding: 0;
+	font-family: 'Roboto Slab', serif;
+	font-weight: bold;
+	font-size: 1em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	display: block;
+}
+.submit:hover{
+	background-color: cyan;
+	opacity: 1;
+}
+nav.custom-head{
+	border-radius: 0;
+	position: relative;
+	background-color: black;
+	border: none;
+	font-family: 'Roboto Slab', serif;
+}
+#logo{
+	font-family: 'Megrim', cursive;
+}
+ul#tops{
+	text-align: center;
+	color: white;
+	list-style-type: none;
+	padding: 0;
+	font-family: 'Roboto Slab', serif;
+}
+li.rank0{
+	font-size: 3em;
+}
+li.rank1{
+	font-size: 2em;
+}
+li.rank2{
+	font-size: 1em;
+}
+.showUsers:hover{
+	color: cyan;
+}
+.showUsers{
+	cursor: pointer;
+}
+#player{
+  width: 30em;
+  position: static;
+  margin: 0 auto;
+}

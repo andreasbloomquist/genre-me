@@ -8,14 +8,19 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="http://connect.soundcloud.com/sdk.js"></script>
 	<script type="text/javascript" src="/javascripts/app.js"></script>
+	<script type="text/javascript" src="https://w.soundcloud.com/player/api.js"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<script type="text/javascript" src="/javascripts/home.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
 
 </head>
 <body>
 	<header id="header">
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-default custom-head">
   			<div class="container-fluid">
 		    	<div class="navbar-header">
       				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -24,7 +29,7 @@
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
       				</button>
-      				<a class="navbar-brand" href="/">Genre.me</a>
+      				<a class="navbar-brand" href="/" id="logo">Genre.me</a>
     			</div>
     			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       				<ul class="nav navbar-nav navbar-right" id="login-links">
@@ -34,23 +39,23 @@
 		</nav>
 	</header>
 	<div id="page-wrapper" class="container-fluid collg-12">
-		<h1>Home page</h1>
-		<h2>Top Genres</h2>
+		<h1>Welcome to Genre.me</h1>
 		<div id="topGenres"></div>
+		<div id="loadMore">
 		<div id="player"></div>
-		<div id="load-more">
-			<button>Load more top genres</button>
+			<button class="submit">Load more top genres</button>
 		</div>
-		<div id="play-random">
-			<button>Play a random genre</button>
+		<div id="playRandom">
+			<button class="submit">Play a random genre</button>
 		</div>
 	</div>
-</body>
 <script type="text/template" id="homeTopGenres">
-	<ul>
-		<% _.each([tops[0], tops[1], tops[2]], function(item){ %>
-		<li><a href='#' class='genre'><%= item.name %></a><span> <%= item.likes %> people like this</span></li>
+	<ul id="tops">
+		<% _.each([tops[0], tops[1], tops[2]], function(item, index){ %>
+		<li class="rank<%= index %>"><a href='#' class='genre'><%= item.name %></a><span> <%= item.likes %> people like this</span></li>
+		<li data-id="<%= item.id %>" class='showUsers'>See who likes this</li>
 		<% }); %>
 	</ul>
 </script>
+</body>
 </html>

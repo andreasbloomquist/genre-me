@@ -32,4 +32,4 @@ var removeGenre = function(genre){
 	}).done(function(){
 		location.reload();
 	});
-}
+};

@@ -24,12 +24,10 @@ var loginHelpers = function (req, res, next) {
 		req.user = user;
 		return user;
 	};
-
 	req.logout = function() {
 		req.session.userId = null;
 		req.user = null;
-	}
-
+	};
 	req.currentUser = function(cb) {
 		var userId = req.session.userId;
 		db.User.
@@ -37,6 +35,10 @@ var loginHelpers = function (req, res, next) {
 				_id: userId
 			}, cb);
 	};
+	// req.findUser = function(cb){
+	// 	var user = req.params;
+	// 	db.User.findOne(user, cb);
+	// };
 
 	next();
 };
@@ -66,8 +68,7 @@ app.get("/profile", function (req, res){
 		} else {
 			res.redirect('/login');
 		}
-	})
-
+	});
 });
 
 app.get("/new-genre", function (req, res){
@@ -78,7 +79,6 @@ app.get("/new-genre", function (req, res){
 //sign up post
 app.post("/users", function (req, res){
 	var newUser = req.body.user;
-
 	db.User.
 		createSecure(newUser, function (err, user){
 			if (user) {
@@ -139,22 +139,45 @@ app.get("/users/:id/genres", function (req, res){
 });
 
 app.get("/users/:_id", function (req, res){
-	var user = req.session.userId;
-
-})
+	var user = req.params;
+	db.User.findOne(user, function(err, user){
+		if (user){
+			res.send(user);
+		} else {
+			res.send(504, "there was an error");
+		};
+	});
+});
 
 app.post("/remove/:_id", function (req, res){
 	var user = req.session.userId;
 	var genre = req.params;
-	
 	db.Genre.removeUser(genre, user);
 	res.send(204);
-})
+});
 
 app.get("/genres", function (req, res){
 	db.Genre.find({}, function(err, genres){
 		res.send(genres);
-	})
+	});
+});
+
+app.get("/genres/:_id/users", function (req, res){
+	var genre = req.params;
+	console.log(genre);
+	db.Genre.find(genre, function(err, genres){
+		if (genres){
+			var users = genres[0].users;
+			console.log(users);
+			db.User.find({
+				_id: { $in: users }
+				}, function(err, users){
+				if (users){
+					res.send(users);
+				};
+			});
+		};
+	});
 })
 
 app.listen(3000, function(){

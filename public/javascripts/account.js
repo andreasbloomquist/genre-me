@@ -7,4 +7,4 @@ $(function(){
 			$("#addGenre").removeAttr("disabled");
 		}
 	});	
-})
+});
