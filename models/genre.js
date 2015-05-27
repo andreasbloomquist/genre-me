@@ -21,7 +21,7 @@ genreSchema.statics.findAndUpdateGenre = function (params, user){
     var updateQuery = {$push: {users: user}};
     var options = {safe: true, upsert: true};
 
-	this.findOneAndUpdate(query, updateQuery, function(err, genre){
+	this.findOneAndUpdate(query, updateQuery, options, function(err, genre){
 		if(genre) {
     		console.log("Error:  "  + err + "Update: " + genre);
     		return true;
@@ -31,8 +31,18 @@ genreSchema.statics.findAndUpdateGenre = function (params, user){
 					console.log("Error:  "  + err + "Update: " + genre);
 				});
 			});
-		}
+		};
 	});
+};
+
+genreSchema.statics.removeUser = function(params, user){
+	var query = params;
+    var updateQuery = {$pop: {users: user}};
+    var options = {safe: true, upsert: true};
+
+    this.findOneAndUpdate(query, updateQuery, function(err, genre){
+    	console.log(err, genre);
+    });
 };
 
 genreSchema.statics.findUserGenres = function (user, cb){

@@ -4,21 +4,53 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Home</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	
+	<script type="text/javascript" src="http://connect.soundcloud.com/sdk.js"></script>
 	<script type="text/javascript" src="/javascripts/app.js"></script>
-
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<script type="text/javascript" src="/javascripts/home.js"></script>
+
 </head>
 <body>
+	<header id="header">
+		<nav class="navbar navbar-default">
+  			<div class="container-fluid">
+		    	<div class="navbar-header">
+      				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+      				</button>
+      				<a class="navbar-brand" href="/">Genre.me</a>
+    			</div>
+    			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      				<ul class="nav navbar-nav navbar-right" id="login-links">
+      				</ul>
+    			</div>
+  			</div>
+		</nav>
+	</header>
 	<div id="page-wrapper" class="container-fluid collg-12">
-		<a href="/login">login</a>
-		<a href="/signup">signup</a>
 		<h1>Home page</h1>
-		<h2>Coming soon</h2>
-		<div id="#player"></div>
-		<div id="#results"></div>
+		<h2>Top Genres</h2>
+		<div id="topGenres"></div>
+		<div id="player"></div>
+		<div id="load-more">
+			<button>Load more top genres</button>
+		</div>
+		<div id="play-random">
+			<button>Play a random genre</button>
+		</div>
 	</div>
 </body>
+<script type="text/template" id="homeTopGenres">
+	<ul>
+		<% _.each([tops[0], tops[1], tops[2]], function(item){ %>
+		<li><a href='#' class='genre'><%= item.name %></a><span> <%= item.likes %> people like this</span></li>
+		<% }); %>
+	</ul>
+</script>
 </html>

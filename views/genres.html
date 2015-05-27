@@ -4,11 +4,15 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Select a genre</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="http://connect.soundcloud.com/sdk.js"></script>
 	<script type="text/javascript" src="/javascripts/data.js"></script>
-	<script type="text/javascript" src="/javascripts/app.js"></script>
+	<script type="text/javascript" src="/javascripts/account.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css">
 </head>
 <body>
 	<div id="page-wrapper" class="container-fluid collg-12">
@@ -17,13 +21,20 @@
 		<h1>Select a genre</h1>
 		<h2>Coming soon</h2>
 
-		<form action="/genres" method="POST" accept-charset="utf-8">
+<!-- 		<form action="/genres" method="POST" accept-charset="utf-8">
   				<div class="form-group">
     				<label>Enter a genre name</label>
     				<input type="text" class="form-control select" id="genreSelect" placeholder="enter a genre" name="genre[name]">
-  					<button id="addGenre" disabled>submit</button>
+  					<button id="addGenre" disabled >submit</button>
   				</div>
 		</form>
+	</div> -->
+			<form id="toggleForm" action="/genres" method="POST" accept-charset="utf-8">
+  				<div class="form-group">
+    				<input type="text" class="form-control select" id="genreSelect" placeholder="enter a genre" name="genre[name]">
+  					<button type="submit" id="addGenre" disabled >submit</button>
+  				</div>
+			</form>
 	</div>
 </body>
 </html>

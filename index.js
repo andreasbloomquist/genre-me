@@ -59,11 +59,18 @@ app.get("/signup", function (req, res){
 });
 
 app.get("/profile", function (req, res){
-	var profilePath = path.join(views, "profile.html")
-	res.sendFile(profilePath);
+	var profilePath = path.join(views, "profile.html");
+	req.currentUser(function(err, user){
+		if (user){
+			res.sendFile(profilePath);
+		} else {
+			res.redirect('/login');
+		}
+	})
+
 });
 
-app.get("/genres", function (req, res){
+app.get("/new-genre", function (req, res){
 	var genrePath = path.join(views, "genres.html");
 	res.sendFile(genrePath);
 });
@@ -76,7 +83,7 @@ app.post("/users", function (req, res){
 		createSecure(newUser, function (err, user){
 			if (user) {
 				req.login(user);
-				res.redirect("/genres");
+				res.redirect("/new-genre");
 			} else {
 				res.redirect("/signup");
 			}
@@ -108,16 +115,13 @@ app.get("/logout", function (req, res){
 app.post("/genres", function (req, res){
 	var genre = req.body.genre;
 	var user = req.session.userId;
-
-	//console.log(genre, user);
+	console.log(user);
 	db.Genre.findAndUpdateGenre(genre, user);
-	
 	res.redirect("/profile");
 });
 
 app.get("/current", function (req, res){
 	req.currentUser(function (err, user){
-		//console.log(err, user)
 		res.send(user);
 	});
 });
@@ -125,7 +129,6 @@ app.get("/current", function (req, res){
 // api route to get json for a particular genre._id
 app.get("/users/:id/genres", function (req, res){
 	var user = req.params.id;
-
 	db.Genre.findUserGenres(user, function(err, genres){
 		if (genres) {
 			res.send(genres);
@@ -135,10 +138,25 @@ app.get("/users/:id/genres", function (req, res){
 	});
 });
 
+app.get("/users/:_id", function (req, res){
+	var user = req.session.userId;
+
+})
+
+app.post("/remove/:_id", function (req, res){
+	var user = req.session.userId;
+	var genre = req.params;
+	
+	db.Genre.removeUser(genre, user);
+	res.send(204);
+})
+
+app.get("/genres", function (req, res){
+	db.Genre.find({}, function(err, genres){
+		res.send(genres);
+	})
+})
+
 app.listen(3000, function(){
 	console.log("Running! GO CHECK LOCALHOST:3000");
 });
-
-// idea: hard code genre list to select from
-// todo: come up with a second schema idea
-//todo: scrape wiki music genre list
