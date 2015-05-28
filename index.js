@@ -35,10 +35,6 @@ var loginHelpers = function (req, res, next) {
 				_id: userId
 			}, cb);
 	};
-	// req.findUser = function(cb){
-	// 	var user = req.params;
-	// 	db.User.findOne(user, cb);
-	// };
 
 	next();
 };
@@ -115,7 +111,6 @@ app.get("/logout", function (req, res){
 app.post("/genres", function (req, res){
 	var genre = req.body.genre;
 	var user = req.session.userId;
-	console.log(user);
 	db.Genre.findAndUpdateGenre(genre, user);
 	res.redirect("/profile");
 });
@@ -174,11 +169,9 @@ app.get("/genres", function (req, res){
 
 app.get("/genres/:_id/users", function (req, res){
 	var genre = req.params;
-	console.log(genre);
 	db.Genre.find(genre, function(err, genres){
 		if (genres){
 			var users = genres[0].users;
-			console.log(users);
 			db.User.find({
 				_id: { $in: users }
 				}, function(err, users){
