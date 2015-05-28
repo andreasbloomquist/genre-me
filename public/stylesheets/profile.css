@@ -4,6 +4,7 @@ nav.custom-head{
 	background-color: black;
 	border: none;
 	font-family: 'Roboto Slab', serif;
+	margin-bottom: 0;
 }
 body { 
   background: url('/images/triangle-bg.png') no-repeat center center fixed; 
@@ -11,4 +12,8 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+div#top-page {
+	background-image: url('/images/halftone.png');
+	height: 35em;
 }
