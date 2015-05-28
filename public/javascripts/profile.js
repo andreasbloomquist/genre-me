@@ -1,26 +1,46 @@
 $(function(){
 	profileRender();
+	init();
+
+});
+var userId;
+
+var init = function(){
 	$("#toggleForm").hide();
 
 	$("#newGenre").on("click", function(e){
-		e.preventDefault();
 		$("#toggleForm").toggle();
 	});
-
-});
-
+	$("#toggleForm").on("submit", function(e){
+		e.preventDefault();
+		var genreParams = $(this).serialize();
+		addGenre(genreParams);
+	})
+}
 var profileRender = function(){
 	$.get("/current", function(res){
 		var firstName = res.first_name;
 		$("#greet").append("<strong>" + firstName + "</strong> profile")
-		var userId = res._id;
+		userId = res._id;
 		render("#user-data", "profile-template", res);
-		var url = "/users/" + userId + "/genres";
+		genreRender();
+	});
+};
+
+var genreRender = function(){
+	var url = "/users/" + userId + "/genres";
 		$.get(url).done(function(res){
-			test = res;	
+			test = res;
 			render("#user-genres", "profile-genre-template", test);
 			initSC();
 		});
+};
+
+var addGenre = function(genreParams){
+	$.post("/genres", genreParams).done(function(res){
+		genreRender();
+	}).done(function(res){
+		$("#toggleForm")[0].reset();
 	});
 };
 

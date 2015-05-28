@@ -14,7 +14,7 @@ function render(targetId, templateId, res){
   var tmpl_str = $("#" + templateId).html();
   var compile = _.template(tmpl_str);
   var html_str = compile(res);
-  $(targetId).append(html_str);
+  $(targetId).html(html_str);
 };
 
 // Function to search SoundClouds api by genre and returns top track within the genre to play
