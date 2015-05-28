@@ -10,7 +10,6 @@ h1{
 	font-family: 'Exo 2', sans-serif;
 	font-size: 4.5em;
 	color: white;
-	bottom: 5px;
 }
 h2 {
 	text-align: center;
@@ -39,7 +38,8 @@ button.submit{
 nav.custom-head{
 	border-radius: 0;
 	position: relative;
-	background-image: url('/images/stardust.png');
+	background-color: black;
+	/*background-image: url('/images/stardust.png');*/
 	border: none;
 	font-family: 'Roboto Slab', serif;
 	margin-bottom: 0;
@@ -57,13 +57,13 @@ ul#tops{
 	margin-bottom: 2em;
 }
 li.rank0{
-	font-size: 3em;
+	font-size: 4.5em;
 }
 li.rank1{
-	font-size: 2em;
+	font-size: 2.75em;
 }
 li.rank2{
-	font-size: 1em;
+	font-size: 2em;
 }
 .showUsers:hover{
 	color: cyan;
@@ -72,7 +72,6 @@ li.rank2{
 	cursor: pointer;
 }
 #player{
-  position: static;
   margin: 0 auto;
 }
 div#top-image{
@@ -92,8 +91,31 @@ a {
 	color: black;
 }
 #bottomPage{
-	margin-top: 16em;
+  margin-top: 3.5em;
+  position: fixed;
+  width: 100%;
 }
 li{
 	margin: 5px 0 5px 0;
+}
+#pgScroll{
+	text-align: center;
+	border: none;
+	background-color: transparent;
+	color: white;
+	font-size: 1.5em;
+	width: 100%;
+	outline: none;
+}
+div#about {
+  margin-top: 32em;
+  margin-bottom: 25em;
+  color: white;
+}
+p{
+	text-align: center;
+	font-family: 'Roboto Slab', serif;
+	padding: 0 10em 0 10em;
+	font-size: 1em;
+
 }

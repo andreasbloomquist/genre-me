@@ -156,8 +156,8 @@ app.get("/users/:_id/profile", function (req, res){
 		if (user){
 			res.sendFile(publicPath);
 		};
-	})
-})
+	});
+});
 
 app.post("/remove/:_id", function (req, res){
 	var user = req.session.userId;

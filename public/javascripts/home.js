@@ -3,11 +3,17 @@ $(function(){
 
 	$("#playRandom").on("click", function(e){
 		playRandom();
+		console.log("random here!")
 	});
 
 	$("#loadMore").on("click", function(e){
 		loadMore();
+		initSC();
 		page += 1;
+	});
+
+	$("#pgScroll").on("click", function(e){
+		scrollPage();
 	});
 
 }).on("click", ".showUsers", function(e){
@@ -89,3 +95,17 @@ function compare(a,b) {
   return 0;
 };
 
+var scrollPage = function(){
+	if ($("#toggleArrow").hasClass("glyphicon glyphicon-menu-up")){
+		$("#toggleArrow").removeClass("glyphicon glyphicon-menu-up");
+		$("#toggleArrow").addClass("glyphicon glyphicon-menu-down");
+		$("html, body").animate({ scrollTop: $('#header').offset().top }, 250);
+		$("#toggleGreet").replaceWith("<h1 id='toggleGreet'>Learn about Genre.me</h1>");
+	} else {
+		$("html, body").animate({ scrollTop: $('#about').offset().top }, 250);
+		$("#toggleArrow").removeClass("glyphicon glyphicon-menu-down");
+		$("#toggleArrow").addClass("glyphicon glyphicon-menu-up");
+		$("#toggleGreet").replaceWith("<h1 id='toggleGreet'>See top genres</h1>");
+
+	};
+};

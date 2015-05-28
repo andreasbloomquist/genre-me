@@ -41,36 +41,42 @@
 		</nav>
 	</header>
 	<div id="top-page">
-	<div id="page-wrapper" class="container-fluid collg-12">
+	<div id="page-wrapper" class="container-fluid col-sm-5 col-sm-offset-1">
 		<h3 id="greet"></h3>
+ 		<div id="avatar">
+			<img id="userAvatar" src="/images/person-placeholder.jpg">
+		</div>
 		<div id="user-data"></div>
 	</div>
-		<h3>Genres you like</h3>
 
-			<a href="#" id="newGenre">Add a new genre</a>
-			<form id="toggleForm" action="/genres" method="POST" accept-charset="utf-8">
+		<div class="col-sm-6">
+				<h3>Genres you like</h3>
+				<a href="#" id="newGenre">Add a new genre</a>
+				<form id="toggleForm" action="/genres" method="POST" accept-charset="utf-8">
   				<div class="form-group">
-    				<input type="text" class="form-control select" id="genreSelect" placeholder="enter a genre" name="genre[name]">
+    				<input type="text" class="form-control select" id="genreSelect" placeholder="Start typing a genre and then select from the list" name="genre[name]">
   					<button type="submit" id="addGenre" disabled >submit</button>
   				</div>
 			</form>
-		
-		<div id="user-genres"></div>
+		</div>
+		<div class="col-sm-2" id="user-genres"></div>
 		<div id="player"></div>
 	</div>
 </body>
 	<script type="text/template" id="profile-template">
-      		<ul>
-      			<li><%= first_name %></li>
-      			<li><%= last_name %></li>
+      		<ul class="custom">
+      			<li><strong>First name: </strong><%= first_name %></li>
+      			<li><strong>Last name: </strong><%= last_name %></li>
       			<li><%= bio %></li>
       		</ul>
 	</script>
 	<script type="text/template" id="profile-genre-template">
-		<ul>
+		<ul class='custom'>
 			<% _.each(test, function(item){ %>
+			<button data-id="<%= item._id %>" onclick="removeGenre(this)" type="button" class="btn btn-default btn-xs" id="btn-rm">
+				 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			</button>
 			<li><a href='#' class='genre'><%= item.name %></a></li>
-			<button data-id="<%= item._id %>" onclick="removeGenre(this)" type="button" class="btn btn-default btn-xs" id="btn-rm">remove</button>
 			<% }); %>
 		</ul>
 	</script>

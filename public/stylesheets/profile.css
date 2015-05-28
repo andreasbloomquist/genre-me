@@ -7,7 +7,7 @@ nav.custom-head{
 	margin-bottom: 0;
 }
 body { 
-  background: url('/images/triangle-bg.png') no-repeat center center fixed; 
+  background: url('/images/stardust.png') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -16,4 +16,57 @@ body {
 div#top-page {
 	background-image: url('/images/halftone.png');
 	height: 35em;
+	padding-top: 2em;
+	font-family: 'Roboto Slab', serif; 
+}
+#avatar{
+	width: 100%;
+	vertical-align: top;
+    display: inline-block;
+}
+#userAvatar {
+	border-radius: 50%;
+	width: 10em;
+	margin: 10px;
+	float: left;
+}
+#greet{
+	color: black;
+	float: left;
+}
+#user-data{
+	float: left;
+}
+ul.custom {
+  padding-left: 0;
+  padding-top: 1em;
+  list-style-type: none;
+}
+button#btn-rm {
+  background-color: transparent;
+  border: none;
+  float: right;
+}
+#addGenre{
+	background-color: transparent;
+	border: 2px solid black;
+	display: inline-block;
+	width: 100%;
+	margin-top: 1em;
+}
+input#genreSelect{
+	border-radius: 0;
+	border: none;
+	margin-top: 1em;
+}
+#addGenre:hover{
+	background-color: #5B6565;
+	color: white;
+	border: 2px solid #5B6565;
+}
+#x{
+	color: red;
+}
+div#player{
+	margin-top: 1em;
 }
