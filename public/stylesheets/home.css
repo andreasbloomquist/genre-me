@@ -82,6 +82,7 @@ div#top-image{
 	height: 40em;
 	background-size: auto;
 	background-position: center;
+	background-repeat: no-repeat;
 }
 div#page-wrapper.custom{
 	padding-right: 0;
