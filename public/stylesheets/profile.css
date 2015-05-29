@@ -77,6 +77,8 @@ div#player{
 	border-radius: 50%;
 	background-color: transparent;
 	opacity: 0.6;
+	margin-left: 1em;
+	/*margin-bottom: 1em;*/
 }
 #xClose{
 	color: white;
