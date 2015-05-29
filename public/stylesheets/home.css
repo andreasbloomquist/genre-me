@@ -30,10 +30,12 @@ button.submit{
 	margin-bottom: 1em;
 	display: block;
 	width: 40%;
+	opacity: 0.5;
 }
 .submit:hover{
 	background-color: cyan;
 	opacity: 1;
+	font-weight: bolder;
 }
 nav.custom-head{
 	border-radius: 0;
