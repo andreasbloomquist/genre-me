@@ -1,10 +1,11 @@
 $(function(){
 	profileRender();
 	init();
-
 });
+
 var userId;
 
+// Function to setup event listeners for showing/hiding and submitting the add genre form on the users profile page
 var init = function(){
 	$("#toggleForm").hide();
 
@@ -19,6 +20,7 @@ var init = function(){
 	});
 };
 
+// Function to render the data for a users profile
 var profileRender = function(){
 	$.get("/current", function(res){
 		var firstName = res.first_name;
@@ -29,6 +31,7 @@ var profileRender = function(){
 	});
 };
 
+// function to render data related to the users genres they have liked
 var genreRender = function(){
 	var url = "/users/" + userId + "/genres";
 		$.get(url).done(function(res){
@@ -38,6 +41,7 @@ var genreRender = function(){
 		});
 };
 
+// Function to add a new genre to the users account via ajax, and refresh the genres
 var addGenre = function(genreParams){
 	$.post("/genres", genreParams).done(function(res){
 		genreRender();
@@ -46,6 +50,7 @@ var addGenre = function(genreParams){
 	});
 };
 
+// Function to remove genre via ajax
 var removeGenre = function(genre){
 	var $genre = $(genre).data('id');
 	console.log($genre)

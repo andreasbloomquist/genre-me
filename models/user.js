@@ -36,27 +36,27 @@ var userSchema = new mongoose.Schema({
 						}
 					});
 
+// Function to confirm if the passwords match during signup
 var confirm = function (password, passwordConf) {
 	return password === passwordConf;
 };	
 
+// Function to create user account
 userSchema.statics.createSecure = function (params, cb) {
 	var isConfirmed;
-	
 	isConfirmed = confirm(params.password, params.password_conf);
-	
+
 	if (!isConfirmed) {
 		return cb("Passwords Should Match", null);
 	};
-
 	var that = this;
-
 	bcrypt.hash (params.password, 10, function (err, hash) {
 		params.passwordDigest = hash;
 		that.create(params, cb);
 	});
 };
 
+// Function to log a user in. If the login fails, then a second callback function is called.
 userSchema.statics.authenticate = function(params, cb, cb2) {
  	this.findOne({
 		email: params.email
@@ -69,6 +69,7 @@ userSchema.statics.authenticate = function(params, cb, cb2) {
 	});
 };
 
+// Function to check if a users password is correct
 userSchema.methods.checkPassword = function (password, cb) {
 	var user = this;
 	bcrypt.compare(password,

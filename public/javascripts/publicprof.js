@@ -5,6 +5,7 @@ var userId;
 var url; 
 var genreUrl;
 
+// Function to render a public facing profile page
 var profileRender = function(){
 	var pathArray = window.location.pathname.split( '/' );
 	userId = pathArray[2];
