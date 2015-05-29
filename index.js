@@ -96,9 +96,9 @@ app.post("/login", function (req, res){
 			if (!err) {
 				req.login(user);
 				res.redirect("/profile");
-			} else {
-				res.redirect("/login")
-			};
+			}
+		}, function(){
+			res.redirect("/login");
 		});
 });
 
@@ -112,7 +112,7 @@ app.post("/genres", function (req, res){
 	var genre = req.body.genre;
 	var user = req.session.userId;
 	db.Genre.findAndUpdateGenre(genre, user);
-	res.redirect("/profile");
+	res.send(201);
 });
 
 app.get("/current", function (req, res){
@@ -128,7 +128,7 @@ app.get("/users/:id/genres", function (req, res){
 		if (genres) {
 			res.send(genres);
 		} else {
-			res.send("there was an error");
+			res.redirect("/login");
 		};
 	});
 });
@@ -139,7 +139,7 @@ app.get("/users/:_id", function (req, res){
 		if (user){
 			res.send(user);
 		} else {
-			res.send(504, "there was an error");
+			res.send(504, "User not found");
 		};
 	});
 });

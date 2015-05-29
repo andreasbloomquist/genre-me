@@ -57,11 +57,15 @@ userSchema.statics.createSecure = function (params, cb) {
 	});
 };
 
-userSchema.statics.authenticate = function(params, cb) {
-	this.findOne({
+userSchema.statics.authenticate = function(params, cb, cb2) {
+ 	this.findOne({
 		email: params.email
 	}, function (err, user) {
+		if (user) {
 		user.checkPassword(params.password, cb);
+		} else if (user === null) {
+			cb2();
+		};
 	});
 };
 

@@ -11,12 +11,14 @@ var init = function(){
 	$("#newGenre").on("click", function(e){
 		$("#toggleForm").toggle();
 	});
+
 	$("#toggleForm").on("submit", function(e){
 		e.preventDefault();
 		var genreParams = $(this).serialize();
 		addGenre(genreParams);
-	})
-}
+	});
+};
+
 var profileRender = function(){
 	$.get("/current", function(res){
 		var firstName = res.first_name;
@@ -44,12 +46,12 @@ var addGenre = function(genreParams){
 	});
 };
 
-//TODO: Remove refresh hack!!!!!!!!!!!!!
 var removeGenre = function(genre){
 	var $genre = $(genre).data('id');
+	console.log($genre)
 	$.post("/remove/" + $genre, function(res){
-		console.log("removing")
+		console.log("removing");
 	}).done(function(){
-		location.reload();
+		genreRender();
 	});
 };
