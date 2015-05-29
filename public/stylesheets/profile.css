@@ -73,3 +73,11 @@ div#player{
 #logo{
 	font-family: 'Open Sans', sans-serif;
 }
+#closePlayer{
+	border-radius: 50%;
+	background-color: transparent;
+	opacity: 0.6;
+}
+#xClose{
+	color: white;
+}

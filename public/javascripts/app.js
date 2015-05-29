@@ -40,6 +40,7 @@ function playSomeSound(genre){
 // NOTE:  Turning iFrame: false sets the widget to use the old style
 function playGenre(){
 	SC.oEmbed(tracks, {iframe: true, show_artwork: true, auto_play: true, buying: false, download: false, sharing: false, liking: false, show_comments: false}, document.getElementById('player'));
+	genCloseBtn();
 };
 
 // Function to initialize event listeners based on the genres available on the page
@@ -62,5 +63,14 @@ function genHeader(){
 		} else {
 			$("#login-links").append("<li><a href='/profile'>Hi, " + res.first_name + "</a></li>", "<li><a href='/logout'>logout</a></li>");
 		}
+	});
+};
+
+function genCloseBtn(){
+	$("#playerBtn").append("<buton type='button' class='btn btn-default btn-xs' id='closePlayer'><span class='glyphicon glyphicon-remove' id='xClose' aria-hidden='true'></span></button>");
+	$("#closePlayer").on("click", function(e){
+		e.preventDefault();
+		$("iFrame").remove();
+		$("#closePlayer").remove();
 	});
 };
