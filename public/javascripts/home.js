@@ -21,8 +21,8 @@ $(function(){
 	if ($(this).hasClass('open')){
 		$('.name').remove();
 		$(this).removeClass('open');
+		$("br").remove();
 	} else {
-
 	$(this).addClass("open");
 	
 	var genreId = $(this).data("id");
@@ -33,7 +33,10 @@ $(function(){
 		x = res;
 	}).done(function(){
 		for (var i = 0; i < x.length; i++){
-			$(target).append("<li class='name'>" + x[i].first_name + "</li>")
+			console.log(x[i]._id);
+			var userProfile = "/users/" + x[i]._id + "/profile";
+
+			$(target).append(" <br><a class='name' href='" + userProfile + "'>" + x[i].first_name + "</a>");
 			};
 		});
 	};

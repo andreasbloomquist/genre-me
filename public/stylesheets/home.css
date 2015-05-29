@@ -7,7 +7,7 @@ body {
 }
 h1{
 	text-align: center;
-	font-family: 'Exo 2', sans-serif;
+	font-family: 'Roboto Slab', serif;
 	font-size: 4.5em;
 	color: white;
 }
@@ -45,14 +45,14 @@ nav.custom-head{
 	margin-bottom: 0;
 }
 #logo{
-	font-family: 'Exo 2', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 ul#tops{
 	text-align: center;
 	color: white;
 	list-style-type: none;
 	padding: 5px 0 5px 0;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Open Sans', sans-serif;
 	margin-top: 5em;
 	margin-bottom: 2em;
 }
@@ -119,3 +119,6 @@ p{
 	font-size: 1em;
 
 }
+.name:hover{
+	color: white ;
+};

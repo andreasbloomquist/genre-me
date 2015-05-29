@@ -35,7 +35,6 @@ var loginHelpers = function (req, res, next) {
 				_id: userId
 			}, cb);
 	};
-
 	next();
 };
 
@@ -128,7 +127,7 @@ app.get("/users/:id/genres", function (req, res){
 		if (genres) {
 			res.send(genres);
 		} else {
-			res.redirect("/login");
+			res.redirect("/flash");
 		};
 	});
 });
