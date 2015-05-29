@@ -92,7 +92,7 @@ div#player{
 	opacity: 0.8;
 }
 a {
-	color: black;
+	color: #BCED09;
 }
 #bottomPage{
   margin-top: 3.5em;
@@ -135,4 +135,9 @@ p {
 }
 #xClose{
 	color: white;
+}
+div#topGenres {
+  background-color: black;
+  opacity: 0.5;
+  height: 100%;
 }
