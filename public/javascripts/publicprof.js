@@ -12,7 +12,7 @@ var profileRender = function(){
 	url = "/users/" + userId;
 	$.get(url, function(res){
 		var firstName = res.first_name;
-		$("#greet").append("<strong>" + firstName + "</strong> profile");
+		$("#greet").append("<strong>" + firstName + "'s</strong> profile");
 		$("#showGenres").append("<h3>Genres " + firstName + " likes</h3>")
 		render("#user-data", "profile-template", res);
 		genreUrl = "/users/" + userId + "/genres";
