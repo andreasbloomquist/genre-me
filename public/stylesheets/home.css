@@ -14,12 +14,11 @@ h1{
 h2 {
 	text-align: center;
 	font-family: 'Roboto Slab', serif;
-	padding-bottom: 1em;
+	padding-bottom: 0.5em;
 	color: white;
 }
 button.submit{
-	background-color: black;
-	opacity: 0.25;
+	background-color: transparent;
 	color: white;
 	margin: 0 auto;
 	border: 0.25em solid white;
@@ -30,6 +29,7 @@ button.submit{
 	margin-top: 1em;
 	margin-bottom: 1em;
 	display: block;
+	width: 40%;
 }
 .submit:hover{
 	background-color: cyan;
@@ -55,6 +55,7 @@ ul#tops{
 	font-family: 'Open Sans', sans-serif;
 	margin-top: 5em;
 	margin-bottom: 2em;
+	font-weight: bold;
 }
 li.rank0{
 	font-size: 4.5em;
@@ -112,13 +113,15 @@ div#about {
   margin-bottom: 25em;
   color: white;
 }
-p{
+.name:hover{
+	color: white ;
+};
+p#test.about {
+	font-size: 1.5em;
+}
+p {
 	text-align: center;
 	font-family: 'Roboto Slab', serif;
 	padding: 0 10em 0 10em;
 	font-size: 1em;
-
 }
-.name:hover{
-	color: white ;
-};

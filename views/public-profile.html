@@ -14,11 +14,9 @@
 	<script type="text/javascript" src="/javascripts/app.js"></script>
 	<script type="text/javascript" src="/javascripts/publicprof.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
-
 	<link rel="stylesheet" type="text/css" href="/stylesheets/profile.css">
-
 </head>
 <body>
 	<header id="header">
@@ -40,23 +38,30 @@
   			</div>
 		</nav>
 	</header>
-	<div id="page-wrapper" class="container-fluid collg-12">
+	<div id="top-page">
+	<div id="page-wrapper" class="container-fluid col-sm-5 col-sm-offset-1">
 		<h3 id="greet"></h3>
+ 		<div id="avatar">
+			<img id="userAvatar" src="/images/person-placeholder.jpg">
+		</div>
 		<div id="user-data"></div>
-		<h3>Genres you like</h3>		
-		<div id="user-genres"></div>
+	</div>
+
+			<div class="col-sm-6" id="showGenres">
+			</div>
+		<div class="col-sm-2" id="user-genres"></div>
 		<div id="player"></div>
 	</div>
 </body>
 	<script type="text/template" id="profile-template">
-      		<ul>
-      			<li><%= first_name %></li>
-      			<li><%= last_name %></li>
+      		<ul class="custom">
+      			<li><strong>First name: </strong><%= first_name %></li>
+      			<li><strong>Last name: </strong><%= last_name %></li>
       			<li><%= bio %></li>
       		</ul>
 	</script>
 	<script type="text/template" id="profile-genre-template">
-		<ul>
+		<ul class='custom'>
 			<% _.each(test, function(item){ %>
 			<li><a href='#' class='genre'><%= item.name %></a></li>
 			<% }); %>

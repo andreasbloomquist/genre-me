@@ -70,3 +70,6 @@ input#genreSelect{
 div#player{
 	margin-top: 1em;
 }
+#logo{
+	font-family: 'Open Sans', sans-serif;
+}

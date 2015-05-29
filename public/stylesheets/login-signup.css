@@ -16,8 +16,8 @@ input.custom {
 	text-transform: none;
 }
 h1 {
+	font-family: 'Open Sans', sans-serif;
 	text-align: center;
-	font-family: 'Megrim', cursive;
 	font-size: 4.5em;
 }
 h2 {
@@ -60,4 +60,10 @@ input.form-control{
 .switchPage{
 	font-family: 'Roboto Slab', serif;
 	text-align: center;
+}
+p.switchPage{
+	color: #CBCBCB;
+}
+a{
+	color: #BCED09;
 }

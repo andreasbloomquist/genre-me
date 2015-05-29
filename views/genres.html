@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="/javascripts/data.js"></script>
 	<script type="text/javascript" src="/javascripts/account.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css">
-	<link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
   	<link rel="stylesheet" type="text/css" href="/stylesheets/login-signup.css">
 
@@ -22,7 +22,7 @@
 	<div id="page-wrapper" class="container-fluid collg-12">
 		<h1>Select a genre</h1>
 		<h2>Start typing a music genre below and select one from the list!</h2>
-		<form action="/genres" method="POST" accept-charset="utf-8">
+		<form action="/genres/new-user" method="POST" accept-charset="utf-8">
   			<div class="form-group col-sm-4 col-sm-offset-4">
     			<input type="text" class="form-control select custom" id="genreSelect" placeholder="enter a genre" name="genre[name]">
   				<button class="submit" id="addGenre" disabled>submit</button>

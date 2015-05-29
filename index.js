@@ -114,6 +114,13 @@ app.post("/genres", function (req, res){
 	res.send(201);
 });
 
+app.post("/genres/new-user", function (req, res){
+	var genre = req.body.genre;
+	var user = req.session.userId;
+	db.Genre.findAndUpdateGenre(genre, user);
+	res.redirect("/profile");
+})
+
 app.get("/current", function (req, res){
 	req.currentUser(function (err, user){
 		res.send(user);
@@ -127,7 +134,7 @@ app.get("/users/:id/genres", function (req, res){
 		if (genres) {
 			res.send(genres);
 		} else {
-			res.redirect("/flash");
+			res.redirect("/login");
 		};
 	});
 });
