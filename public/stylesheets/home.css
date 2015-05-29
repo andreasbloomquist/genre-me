@@ -36,6 +36,7 @@ button.submit{
 	background-color: cyan;
 	opacity: 1;
 	font-weight: bolder;
+	color: black;
 }
 nav.custom-head{
 	border-radius: 0;
@@ -141,3 +142,6 @@ div#topGenres {
   opacity: 0.5;
   height: 100%;
 }
+a:hover{
+	color: cyan;
+};
