@@ -30,9 +30,10 @@ genreSchema.statics.findAndUpdateGenre = function (params, user) {
     		return true;
 		} else {
 			that.create(params, function(err, genre){
-				that.findOneAndUpdate(query, updateQuery, function(err, genre){
-					console.log("Error:  "  + err + "Update: " + genre);
-				});
+				console.log(params);
+				// that.findOneAndUpdate(query, updateQuery, function(err, genre){
+					// console.log("Error:  "  + err + "Update: " + genre);
+				// });
 			});
 		};
 	});
