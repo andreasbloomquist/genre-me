@@ -1,6 +1,11 @@
 $(function(){
 	profileRender();
 	init();
+
+}).on("click", ".remove", function(e){
+	e.preventDefault();
+	var test = $(this);
+	removeGenre(test);
 });
 
 var userId;

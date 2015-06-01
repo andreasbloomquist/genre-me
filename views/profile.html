@@ -71,7 +71,7 @@
 	<script type="text/template" id="profile-genre-template">
 		<ul class='custom'>
 			<% _.each(test, function(item){ %>
-			<button data-id="<%= item._id %>" onclick="removeGenre(this)" type="button" class="btn btn-default btn-xs" id="btn-rm">
+			<button data-id="<%= item._id %>" type="button" class="btn btn-default btn-xs remove" id="btn-rm">
 				 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 			</button>
 			<li><a href='#' class='genre'><%= item.name %></a></li>

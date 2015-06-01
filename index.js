@@ -3,14 +3,17 @@ var express = require("express"),
 	bcrypt = require("bcrypt"),
 	session = require("express-session"),
 	path = require("path"),
+	flash = require("connect-flash"),
 	db = require("./models");
 
 var views = path.join(__dirname, "views");
 var pub = path.join(__dirname, "public");
 
 app = express();
+app.use(flash());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/bower_components"));
 
 app.use(session({
 	secret: "Very secret",
@@ -37,6 +40,9 @@ var loginHelpers = function (req, res, next) {
 	};
 	next();
 };
+
+var env = process.env;
+var api_key = env.SC_API_KEY;
 
 app.use(loginHelpers);
 
@@ -80,6 +86,7 @@ app.post("/users", function (req, res){
 				req.login(user);
 				res.redirect("/new-genre");
 			} else {
+				req.flash("error", err);
 				res.redirect("/signup");
 			}
 		});
@@ -95,6 +102,9 @@ app.post("/login", function (req, res){
 			if (!err) {
 				req.login(user);
 				res.redirect("/profile");
+			} else {
+				req.flash('error', err);
+				res.redirect("/login");
 			}
 		}, function(){
 			res.redirect("/login");
@@ -202,7 +212,7 @@ app.get("/genres/trending", function (req, res){
 			};
 		tops.sort(compare);
 		};
-		res.send(tops.slice(0, 9));
+		res.send(tops.slice(0, 10));
 	});
 });
 
