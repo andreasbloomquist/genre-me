@@ -77,6 +77,10 @@ app.get("/new-genre", function (req, res){
 //sign up post
 app.post("/users", function (req, res){
 	var newUser = req.body.user;
+	// regex ftw
+	newUser.first_name = newUser.first_name.replace(/[</>]/gi, '');
+	newUser.last_name = newUser.last_name.replace(/[</>]/gi, '');
+	newUser.bio = newUser.bio.replace(/[</>]/gi, '');
 	db.User.
 		createSecure(newUser, function (err, user){
 			if (user) {
