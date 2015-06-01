@@ -65,7 +65,7 @@ var loadMore = function(index){
 		var ind = ((page * 3) + i);
 		console.log(tops[ind]);
 		$("#tops").append(
-		"<li><a href='#' class='genre'>" + tops[ind].name + " </a><span>" + tops[ind].likes + " people like this</span></li><li data-id='" + tops[ind].id + "' class='showUsers'> See who likes this</li>");
+		"<li><a href='#' class='genre'>" + topGenres[ind].name + " </a><span>" + topGenres[ind].likes + " people like this</span></li><li data-id='" + topGenres[ind].id + "' class='showUsers'> See who likes this</li>");
 	};
 };
 

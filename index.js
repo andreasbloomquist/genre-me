@@ -41,9 +41,6 @@ var loginHelpers = function (req, res, next) {
 	next();
 };
 
-var env = process.env;
-var api_key = env.SC_API_KEY;
-
 app.use(loginHelpers);
 
 app.get("/", function (req, res){
