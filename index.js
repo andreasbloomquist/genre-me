@@ -200,10 +200,19 @@ app.get("/genres/trending", function (req, res){
 				var item = { id: genres[i]._id, name: genres[i].name, likes: genres[i].users.length};
 				tops.push(item);
 			};
-		res.send(tops);
+		tops.sort(compare);
 		};
+		res.send(tops.slice(0, 9));
 	});
 });
+
+function compare(a,b) {
+  if (a.likes < b.likes)
+    return 1;
+  if (a.likes > b.likes)
+    return -1;
+  return 0;
+};
 app.listen(process.env.PORT || 3000, function(){
 	console.log("Running! GO CHECK LOCALHOST:3000");
 });

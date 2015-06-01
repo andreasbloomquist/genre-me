@@ -64,7 +64,7 @@
 	</div>
 <script type="text/template" id="homeTopGenres">
 	<ul id="tops">
-		<% _.each([tops[0], tops[1], tops[2]], function(item, index){ %>
+		<% _.each([topGenres[0], topGenres[1], topGenres[2]], function(item, index){ %>
 		<li class="rank<%= index %>"><a href='#' class='genre'><%= item.name %></a><span> <%= item.likes %> people like this</span></li>
 		<li data-id="<%= item.id %>" class='showUsers'>See who likes this</li>
 		<% }); %>

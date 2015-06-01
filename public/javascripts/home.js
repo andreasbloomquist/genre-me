@@ -45,16 +45,15 @@ $(function(){
 });
 
 var theHits;
-var tops = [];
+var topGenres;
 var names = [];
 var page = 1;
 
 // Function to make get request to find all genres, and then calls function to count the number of likes
 var getGenres = function(){
-	$.get("/genres", function(res){
-		theHits = res;
-		genreLikes(theHits);
-		render("#topGenres", "homeTopGenres", tops);
+	$.get("/genres/trending", function(res){
+		topGenres = res;
+		render("#topGenres", "homeTopGenres", topGenres);
 	}).done(function(){
 		initSC();
 	});
@@ -85,23 +84,6 @@ var playRandom = function(){
 	var randNum = Math.floor(Math.random() * tops.length);
 	var randGenre = tops[randNum].name;
 	playSomeSound(randGenre);
-};
-
-// Function to count the number of likes and order the genres in order of popularity
-var genreLikes = function(items){
-	for (var i = 0; i < items.length; i++){
-		var item = { id: items[i]._id, name: items[i].name, likes: items[i].users.length}
-		tops.push(item);
-	};
-	tops.sort(compare);
-};
-
-function compare(a,b) {
-  if (a.likes < b.likes)
-    return 1;
-  if (a.likes > b.likes)
-    return -1;
-  return 0;
 };
 
 // Function to scroll the page and to alternate the icon and text at the bottom of the page
