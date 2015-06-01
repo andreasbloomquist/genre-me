@@ -71,8 +71,8 @@ var loadMore = function(index){
 
 // function to find a random genre
 var playRandom = function(){
-	var randNum = Math.floor(Math.random() * tops.length);
-	var randGenre = tops[randNum].name;
+	var randNum = Math.floor(Math.random() * topGenres.length);
+	var randGenre = topGenres[randNum].name;
 	playSomeSound(randGenre);
 };
 
