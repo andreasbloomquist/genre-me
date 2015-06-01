@@ -70,7 +70,6 @@ function genHeader(){
 function genCloseBtn(){
 	$("#playerBtn").append("<buton type='button' class='btn btn-default btn-xs' id='closePlayer'><span class='glyphicon glyphicon-remove' id='xClose' aria-hidden='true'></span></button>");
 	$("#closePlayer").on("click", function(e){
-		e.preventDefault();
 		$("iFrame").remove();
 		$("#closePlayer").remove();
 	});

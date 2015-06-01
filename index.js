@@ -187,8 +187,23 @@ app.get("/genres/:_id/users", function (req, res){
 			});
 		};
 	});
-})
+});
 
+app.get("/genres/trending", function (req, res){
+	var theHits;
+	var names = [];
+	var tops = [];
+
+	db.Genre.find({}, function(err, genres){
+		if (genres){
+			for (var i = 0; i < genres.length; i++){
+				var item = { id: genres[i]._id, name: genres[i].name, likes: genres[i].users.length};
+				tops.push(item);
+			};
+		res.send(tops);
+		};
+	});
+});
 app.listen(process.env.PORT || 3000, function(){
 	console.log("Running! GO CHECK LOCALHOST:3000");
 });
