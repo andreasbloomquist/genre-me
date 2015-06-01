@@ -69,16 +69,6 @@ var loadMore = function(index){
 	};
 };
 
-// function to make get request to find the user data associated with a given genre
-var getUsers = function(genreId, target){
-	var urlReq = "/genres/" + genreId + "/users";
-	$.get(urlReq, function(res){
-		x = res;
-	}).done(function(){
-		render(target, "userLikes", x);
-	});
-};
-
 // function to find a random genre
 var playRandom = function(){
 	var randNum = Math.floor(Math.random() * tops.length);
